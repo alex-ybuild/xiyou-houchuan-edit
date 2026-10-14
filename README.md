@@ -1,21 +1,99 @@
-# 西游记后传式剪辑 Skill
+<div align="center">
 
-把日常动作剪成一本正经的“大决战”：短动作重复、递进放大分镜、关键帧、交替镜像、功夫音效，以及可选的轻／强法术特效。适配宠物、真人日常动作、运动、产品等素材。
+# 一个动作，值得放三遍。
 
-这是给 Codex 使用的剪辑技能与特效辅助代码，需要代理分析素材并建立时间线；不是一条命令自动完成所有视频的成片工具。裁切和镜像也不等于真实多机位拍摄。
+### 西游记后传式剪辑 Skill
+
+**喝口咖啡，也要运功。猫咪一跳，三界震动。**
+
+把你的日常视频，剪成一场迟迟打不完的神魔大战。
+
+[先看效果](#先看效果) · [安装](#安装) · [让你的视频成仙](#让你的视频成仙) · [原剧节奏拆解](references/original-rhythm.md)
+
+</div>
+
+## 先看效果
+
+### ☕ 别人喝咖啡，你在吸收天地灵气。
+
+![喝口咖啡，也要运功：原片与后传式剪辑对比](assets/demos/coffee.gif)
+
+举杯 → 运功 → 再运一次 → 特写收功。一个日常动作，拥有决战的排面。
+
+[▶ 看带功夫音效的 MP4](https://raw.githubusercontent.com/alex-ybuild/xiyou-houchuan-edit/main/assets/demos/coffee.mp4)
+
+### 🐈 猫咪只是跳了一下，导演觉得事情没那么简单。
+
+![猫咪过招：原片与后传式剪辑对比](assets/demos/cats.gif)
+
+全景交代动作，中景再来一遍，镜像换边，特写加一道法术。
+
+[▶ 看带功夫音效的 MP4](https://raw.githubusercontent.com/alex-ybuild/xiyou-houchuan-edit/main/assets/demos/cats.mp4)
+
+*动图静音；MP4 带功夫音效。素材：MART PRODUCTION / Pexels；Mary Qin / CC BY 3.0。剪辑、镜像和法术均为本项目改编，详见[演示来源与许可](assets/demos/CREDITS.md)。*
+
+## 后传味，从哪里来？
+
+**动作已经结束，气势还没到位。再来一遍。**
+
+| 招式 | 画面里发生什么 |
+| --- | --- |
+| 动作三连 | 同一个动作，原方向 → 镜像 → 原方向，峰值反复强调 |
+| 放大切分镜 | 全景、中景、手部或表情特写，把一个机位拆出层次 |
+| 关键帧推近 | 起势蓄力、出招急推，接触时短促震动，锚点跟着主体走 |
+| 每遍都有声 | 挥动有「咻」，峰值有击打，BGM 连续铺底 |
+| 强法术档 | 金紫描边、光束闪电、分身残影、落地光圈与烟尘 |
+
+我们找了原剧打斗，逐镜拆了重复区间、景别和音效位置，记录了 **13 / 13 / 13 帧**的三连样例，以及另一段全景／近景切换。剪辑先对齐动作，再决定特效。[看原剧实测 →](references/original-rhythm.md)
 
 ## 安装
 
-本仓库根目录就是一个 skill 文件夹。以 Codex 默认技能目录为例：
+给 Codex 装上这门功法：
 
 ```bash
-mkdir -p ~/.codex/skills
 git clone https://github.com/alex-ybuild/xiyou-houchuan-edit.git ~/.codex/skills/xiyou-houchuan-edit
 ```
 
-如果设置了自定义 `CODEX_HOME`，安装到该目录下的 `skills/xiyou-houchuan-edit`。目标目录已存在时，先备份已有版本，勿覆盖自己的修改。若技能列表未刷新，重新打开 Codex 会话。
+如有自定义 `CODEX_HOME`，改装到其 `skills/` 目录。目标文件夹已存在时先备份自己的版本。若技能未出现，重新打开 Codex 会话。
 
-使用逐帧特效辅助代码时，建议创建独立 Python 环境：
+## 让你的视频成仙
+
+把视频交给 Codex，再说：
+
+```text
+用 $xiyou-houchuan-edit 剪这个视频，开启强法术档。
+要明显的放大分镜、镜像三连和关键帧，动作峰值配功夫音效。
+做约 15 秒，再导出一个 Before / After 对比版。
+素材：/你的路径/input.mp4
+```
+
+也可以先收一点力：
+
+| 档位 | 想要的感觉 |
+| --- | --- |
+| 标准剪辑 | 靠重复、景别、镜像和声音，让小动作拥有大场面 |
+| 轻特效 | 增加局部光晕、短残影与克制的调色 |
+| 强法术 | 描边、闪电、分身、光圈，日常动作也能施法 |
+
+**宠物、真人日常、运动、产品都能按动作适配。** 每次重新分析事件和主体轨迹；普通举杯与猫咪腾空会有各自的镜头和特效设计。
+
+### 灵魂 BGM 呢？
+
+当然可以指定刘欢 **《我欲成仙》**：
+
+```text
+BGM 用刘欢《我欲成仙》，连续铺底，音效配合动作峰值。
+音源用我提供的文件；如果取不到指定音源，请说明。
+```
+
+仓库演示使用 CC0 功夫音效，未附原曲。使用歌曲发布视频时，需确认相应的音乐使用权。
+
+<details>
+<summary><strong>运行环境、技能文件与验证</strong></summary>
+
+这是 Codex 使用的技能与辅助代码。代理需要查看素材、设计时间线并调用可用渲染工具；特效函数由调用方提供当前素材的主体遮罩和轨迹。
+
+完整剪辑需要 `ffmpeg` / `ffprobe`，或指定的可用视频编辑器。逐帧特效辅助代码依赖 Python、NumPy、Pillow：
 
 ```bash
 cd ~/.codex/skills/xiyou-houchuan-edit
@@ -23,48 +101,34 @@ python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 ```
 
-完整视频剪辑另需环境中已有的 `ffmpeg` / `ffprobe`，或用户指定的可用视频编辑器。Python 辅助代码使用 NumPy 和 Pillow；无需把 OpenCV 作为必装依赖。
+| 文件 | 用途 |
+| --- | --- |
+| [SKILL.md](SKILL.md) | 动作分析、分镜、节奏、声音与交付规则 |
+| [original-rhythm.md](references/original-rhythm.md) | 原剧打斗的逐镜实测与改编依据 |
+| [effects.md](references/effects.md) | 轻／强特效、素材适配和遮罩要求 |
+| [rendering.md](references/rendering.md) | 时间线、FFmpeg、音画同步与导出检查 |
+| [action_fx.py](scripts/action_fx.py) | 遮罩驱动的描边、残影、光束与光圈函数 |
 
-## 使用
+更新：`git pull --ff-only`，先处理自己的本地修改。
 
-在 Codex 中给出可访问的视频路径，例如：
-
-```text
-用 $xiyou-houchuan-edit 把这个视频剪成西游记后传式效果。
-先分析动作，做明显的全景／中景／特写切换、镜像三连和关键帧。
-使用强法术档，导出约 15 秒的 MP4，并给我 Before / After 对比版。
-素材：/你的路径/input.mp4
-```
-
-可选强度：标准剪辑、轻特效、强法术。强法术包括主体描边、光束／闪电、残影、落地光圈和烟尘，随当前素材的事件与主体轨迹适配；不会套用猫咪示例的固定坐标。
-
-想要经典配乐，可以明确指定：
-
-```text
-BGM 使用刘欢《我欲成仙》，连续铺底，不随动作回放重启。
-使用我提供的可用音源；如果取不到指定音源，说明情况，不用别的音乐冒充。
-```
-
-仓库不附歌曲、原剧音频或视频。音源可访问不代表获得公开发布许可；发布版本需自行确认相应权利。素材署名与许可按来源保留。
-
-## 内容
-
-- [SKILL.md](SKILL.md)：动作分析、剪辑语法、声音及交付规则。
-- [原剧节奏实测](references/original-rhythm.md)：两段原剧参考、帧数与景别分析；区分观测事实和改编参数。
-- [特效与滤镜](references/effects.md)：不同素材的轻／强档设计、归一化坐标和遮罩要求。
-- [渲染规则](references/rendering.md)：FFmpeg 时间线、音画同步及导出验证。
-- [action_fx.py](scripts/action_fx.py)：遮罩驱动的 Pillow 特效函数。调用方提供主体遮罩、轨迹和事件时机；脚本不自动检测主体，也不生成整条剪辑或声音。
-
-## 更新与验证
-
-Git 安装的版本可在技能目录运行 `git pull --ff-only` 更新。先处理自己的本地修改。
+验证辅助代码：
 
 ```bash
 .venv/bin/python -m unittest discover -s tests -v
 ```
 
-测试覆盖空遮罩不改画面、特效局部性、遮罩尺寸校验和可重复的闪电效果。它不代替成片的动作节奏与声音检查。
+测试覆盖空遮罩保持原画、特效局部性、尺寸错误和闪电可重复性。成片仍需检查动作节奏和声音。单机位裁切与镜像不能还原真实的三维视角；低清、静态素材会减少不适合的处理。
 
-## License
+</details>
 
-本仓库原创技能文档与辅助代码以 [MIT](LICENSE) 分发。文中链接的第三方素材、歌曲、剧集和音效保留各自权利，不属于本仓库许可范围。
+## 开源与素材
+
+技能文档与原创辅助代码使用 [MIT License](LICENSE)。演示素材保留各自许可：[完整署名与改编说明](assets/demos/CREDITS.md)。第三方素材、歌曲和剧集不属于 MIT 许可范围。
+
+---
+
+<div align="center">
+
+**你负责一个普通动作。它负责郑重其事地再放两遍。**
+
+</div>
