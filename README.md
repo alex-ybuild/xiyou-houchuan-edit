@@ -10,7 +10,7 @@
 
 ```bash
 mkdir -p ~/.codex/skills
-git clone https://github.com/baoyuanliu/xiyou-houchuan-edit.git ~/.codex/skills/xiyou-houchuan-edit
+git clone https://github.com/alex-ybuild/xiyou-houchuan-edit.git ~/.codex/skills/xiyou-houchuan-edit
 ```
 
 如果设置了自定义 `CODEX_HOME`，安装到该目录下的 `skills/xiyou-houchuan-edit`。目标目录已存在时，先备份已有版本，勿覆盖自己的修改。若技能列表未刷新，重新打开 Codex 会话。
